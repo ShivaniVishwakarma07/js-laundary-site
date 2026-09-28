@@ -76,32 +76,52 @@
 
           <div class="service">
             <span>Dry Cleaning <b>₹200.00</b></span>
-            <button class="remove">Remove Item</button>
+            <button class="add" data-service="Dry Cleaning" data-price="200">
+              Add Item
+            </button>
           </div>
 
           <div class="service">
             <span>Wash & Fold <b>₹100.00</b></span>
-            <button class="add">Add Item</button>
+            <button class="add" data-service="Wash & Fold" data-price="100">
+              Add Item
+            </button>
           </div>
 
           <div class="service">
             <span>Ironing <b>₹30.00</b></span>
-            <button class="remove">Remove Item</button>
+            <button class="add" data-service="Ironing" data-price="30">
+              Add Item
+            </button>
           </div>
 
           <div class="service">
             <span>Stain Removal <b>₹500.00</b></span>
-            <button class="add">Add Item</button>
+            <button class="add" data-service="Stain Removal" data-price="500">
+              Add Item
+            </button>
           </div>
 
           <div class="service">
             <span>Leather & Suede Cleaning <b>₹999.00</b></span>
-            <button class="remove">Remove Item</button>
+            <button
+              class="add"
+              data-service="Leather & Suede Cleaning"
+              data-price="999"
+            >
+              Add Item
+            </button>
           </div>
 
           <div class="service">
             <span>Wedding Dress Cleaning <b>₹2800.00</b></span>
-            <button class="add">Add Item</button>
+            <button
+              class="add"
+              data-service="Wedding Dress Cleaning"
+              data-price="2800"
+            >
+              Add Item
+            </button>
           </div>
 
           <hr />
@@ -122,7 +142,7 @@
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody id="cart-items">
                 <tr>
                   <td>1</td>
                   <td>Dry Cleaning</td>
@@ -145,7 +165,7 @@
 
             <div class="total">
               <strong>Total Amount</strong>
-              <strong>₹1229.00</strong>
+              <strong id="total-amount">₹0.00</strong>
             </div>
           </div>
 
@@ -259,5 +279,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
