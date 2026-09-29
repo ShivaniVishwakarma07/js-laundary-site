@@ -71,3 +71,35 @@ function updateCart() {
 
   totalAmount.textContent = `₹${total.toFixed(2)}`;
 }
+
+function updateCart() {
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td colspan="3" class="empty-cart">
+        No items added to cart
+      </td>
+    `;
+
+    cartItems.appendChild(row);
+  } else {
+    cart.forEach((item, index) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${item.service}</td>
+        <td>₹${item.price.toFixed(2)}</td>
+      `;
+
+      cartItems.appendChild(row);
+    });
+  }
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  totalAmount.textContent = `₹${total.toFixed(2)}`;
+}

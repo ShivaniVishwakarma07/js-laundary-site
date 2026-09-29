@@ -540,3 +540,8 @@ td {
   flex-direction: column;
   gap: 8px;
 }
+.empty-cart {
+  text-align: center;
+  padding: 25px;
+  color: #888888;
+}
