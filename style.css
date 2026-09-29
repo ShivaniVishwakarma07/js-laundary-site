@@ -545,3 +545,17 @@ td {
   padding: 25px;
   color: #888888;
 }
+
+#booking-message {
+  margin-top: 12px;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.booking-error {
+  color: #df6575;
+}
+
+.booking-success {
+  color: #3b9b6d;
+}

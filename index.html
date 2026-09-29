@@ -154,22 +154,35 @@
           <div class="booking">
             <h2>Book Now</h2>
 
-            <label>Full Name</label>
-            <input type="text" placeholder="John Doe" />
+            <form id="booking-form">
+              <label for="full-name">Full Name</label>
+              <input
+                type="text"
+                id="full-name"
+                placeholder="Shivani Vishwakarma"
+              />
 
-            <div class="row">
-              <div>
-                <label>Email ID</label>
-                <input type="email" placeholder="mail@gmail.com" />
+              <div class="row">
+                <div>
+                  <label for="email">Email ID</label>
+                  <input type="email" id="email" placeholder="mail@gmail.com" />
+                </div>
+
+                <div>
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    placeholder="0000000000"
+                    maxlength="10"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label>Phone Number</label>
-                <input type="text" placeholder="0000000000" />
-              </div>
-            </div>
+              <p id="booking-message"></p>
 
-            <button class="book">Book now</button>
+              <button type="submit" class="book">Book now</button>
+            </form>
           </div>
         </section>
       </section>

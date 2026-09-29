@@ -103,3 +103,48 @@ function updateCart() {
 
   totalAmount.textContent = `₹${total.toFixed(2)}`;
 }
+
+const bookingForm = document.getElementById("booking-form");
+const bookingMessage = document.getElementById("booking-message");
+
+bookingForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const fullName = document.getElementById("full-name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  bookingMessage.textContent = "";
+  bookingMessage.className = "";
+
+  if (cart.length === 0) {
+    bookingMessage.textContent = "Please add at least one service to the cart.";
+    bookingMessage.classList.add("booking-error");
+    return;
+  }
+
+  if (fullName === "") {
+    bookingMessage.textContent = "Please enter your full name.";
+    bookingMessage.classList.add("booking-error");
+    return;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    bookingMessage.textContent = "Please enter a valid email address.";
+    bookingMessage.classList.add("booking-error");
+    return;
+  }
+
+  const phonePattern = /^[6-9]\d{9}$/;
+
+  if (!phonePattern.test(phone)) {
+    bookingMessage.textContent = "Please enter a valid 10-digit phone number.";
+    bookingMessage.classList.add("booking-error");
+    return;
+  }
+
+  bookingMessage.textContent = "Booking details are valid.";
+  bookingMessage.classList.add("booking-success");
+});
