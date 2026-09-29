@@ -1,3 +1,7 @@
+emailjs.init({
+  publicKey: "QQUWJhBHc4cvWvJx0",
+});
+
 const cart = [];
 
 const serviceButtons = document.querySelectorAll(".service button");
@@ -106,7 +110,6 @@ function updateCart() {
 
 const bookingForm = document.getElementById("booking-form");
 const bookingMessage = document.getElementById("booking-message");
-
 bookingForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -145,6 +148,42 @@ bookingForm.addEventListener("submit", (event) => {
     return;
   }
 
-  bookingMessage.textContent = "Booking details are valid.";
-  bookingMessage.classList.add("booking-success");
+  const services = cart
+    .map((item) => `${item.service} - ₹${item.price.toFixed(2)}`)
+    .join("\n");
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const templateParams = {
+    customer_name: fullName,
+    customer_email: email,
+    customer_phone: phone,
+    services: services,
+    total_amount: `₹${total.toFixed(2)}`,
+  };
+
+  bookingMessage.textContent = "Sending booking confirmation...";
+  bookingMessage.className = "";
+
+  emailjs
+    .send("service_ookoiby", "template_u0w3e7w", templateParams)
+    .then(() => {
+      bookingMessage.textContent =
+        "Booking confirmed. Check your email for confirmation.";
+      bookingMessage.classList.add("booking-success");
+
+      bookingForm.reset();
+
+      cart.length = 0;
+      updateCart();
+
+      document.querySelectorAll(".service button").forEach((button) => {
+        updateButton(button, false);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      bookingMessage.textContent = "Booking failed. Please try again.";
+      bookingMessage.classList.add("booking-error");
+    });
 });
